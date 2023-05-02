@@ -51,6 +51,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     MainUpdate Main;
     Main.Start();
 
+    ULONGLONG Time = GetTickCount64();
+
     while (msg.message != WM_QUIT)
     {
         if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
@@ -60,10 +62,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
         else 
         {
-            Main.Update();
-            Main.Render();
+            if (Time < GetTickCount64()) 
+            {
+                Time = GetTickCount64();
+
+                Main.Update();
+                Main.Render();
+            }
         }
     }
+
     /*
     while (GetMessage(&msg, nullptr, 0, 0))
     {
@@ -73,9 +81,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             DispatchMessage(&msg);
         }
     }
+    */
 
     return (int) msg.wParam;
-    */
 }
 
 

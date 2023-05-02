@@ -1,13 +1,14 @@
 #pragma once
 #include "Include.h"
 
+class GameObject;
 class MainUpdate
 {
 private :
 	HDC m_hdc;
+
 	RECT rcPoint;
-	int StartX, StartY;
-	int EndX, EndY;
+	GameObject* m_pPlayer;
 public:
 	void Start();
 	void Update();

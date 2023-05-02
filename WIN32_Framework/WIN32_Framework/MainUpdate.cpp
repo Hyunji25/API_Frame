@@ -36,3 +36,4 @@ void MainUpdate::Destroy()
 	delete m_pPlayer;
 	m_pPlayer = NULL;
 }
+

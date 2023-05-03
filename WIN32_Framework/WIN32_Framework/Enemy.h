@@ -14,3 +14,4 @@ public:
 	virtual ~Enemy();
 };
 
+// enemy랑 bullet의 충돌 구현하기

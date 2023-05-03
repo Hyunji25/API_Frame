@@ -10,6 +10,8 @@ public:
 	virtual void Render(HDC hdc)override;
 	virtual void Destroy()override;
 public:
+	GameObject* DestroyEnemy();
+public:
 	Bullet();
 	virtual ~Bullet();
 };

@@ -1,4 +1,5 @@
 #include "Bullet.h"
+#include "Enemy.h"
 
 Bullet::Bullet()
 {
@@ -47,4 +48,14 @@ void Bullet::Render(HDC hdc)
 
 void Bullet::Destroy()
 {
+}
+
+GameObject* Bullet::DestroyEnemy()
+{
+	GameObject* enemy = new Enemy;
+	enemy->Start(transform.position);
+
+	//bullet->SetPosition(transform.position);
+
+	return 0;
 }

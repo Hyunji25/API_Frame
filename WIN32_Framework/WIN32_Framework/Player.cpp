@@ -13,21 +13,29 @@ Player::~Player()
 
 void Player::Start()
 {
-	transform.position = Vector3(700.0f, 350.0f, 0.0f);
+	transform.position = Vector3(WIDTH * 0.5f, HEIGHT * 0.5f, 0.0f);
 	transform.rotation = Vector3(0.0f, 0.0f, 0.0f);
 	transform.scale = Vector3(100.0f, 100.0f, 0.0f);
 
 	Speed = 5.0f;
 
-	for (int i = 0; i < 16; ++i)
+	for (int i = 0; i < BULLETCOUNT; ++i)
 		BulletList[i] = nullptr;
 }
 
-void Player::Update()
+int Player::Update()
 {
-	for (int i = 0; i < 16; ++i)
-		if (BulletList[i] == nullptr)
-			BulletList[i]->Update();
+	for (int i = 0; i < BULLETCOUNT; ++i)
+	{
+		if (BulletList[i] != nullptr)
+		{
+			if (BulletList[i]->Update())
+			{
+				delete BulletList[i];
+				BulletList[i] = nullptr;
+			}
+		}
+	}
 
 	if (GetAsyncKeyState(VK_UP))
 		transform.position.y -= Speed;
@@ -43,13 +51,17 @@ void Player::Update()
 
 	if (GetAsyncKeyState(VK_SPACE))
 	{
-		for (int i = 0; i < 16; ++i) {
-			if (BulletList[i] == nullptr) {
+		for (int i = 0; i < BULLETCOUNT; ++i)
+		{
+			if (BulletList[i] == nullptr) 
+			{
 				BulletList[i] = CreateBullet();
 				break;
 			}
 		}
 	}
+
+	return 0;
 }
 
 void Player::Render(HDC hdc)
@@ -60,8 +72,8 @@ void Player::Render(HDC hdc)
 		int(transform.position.x + (transform.scale.x * 0.5f)), 
 		int(transform.position.y + (transform.scale.y * 0.5f)));
 
-	for (int i = 0; i < 16; ++i)
-		if (BulletList[i] == nullptr)
+	for (int i = 0; i < BULLETCOUNT; ++i)
+		if (BulletList[i] != nullptr)
 			BulletList[i]->Render(hdc);
 }
 
@@ -73,9 +85,9 @@ void Player::Destroy()
 GameObject* Player::CreateBullet()
 {
 	GameObject* bullet = new Bullet;
-	bullet->Start();
+	bullet->Start(transform.position);
 
-	bullet->SetPosition(transform.position);
+	//bullet->SetPosition(transform.position);
 
 	return bullet;
 }

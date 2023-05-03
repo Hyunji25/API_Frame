@@ -21,19 +21,24 @@ void MainUpdate::Start()
 
 void MainUpdate::Update()
 {
-	m_pPlayer->Update();
+	if(m_pPlayer)
+		m_pPlayer->Update();
 }
 
 void MainUpdate::Render()
 {
 	Rectangle(m_hdc, 0, 0, 1420, 720);
 
-	m_pPlayer->Render(m_hdc);
+	if (m_pPlayer)
+		m_pPlayer->Render(m_hdc);
 }
 
 void MainUpdate::Destroy()
 {
-	delete m_pPlayer;
-	m_pPlayer = NULL;
+	if (m_pPlayer) 
+	{
+		delete m_pPlayer;
+		m_pPlayer = NULL;
+	}
 }
 

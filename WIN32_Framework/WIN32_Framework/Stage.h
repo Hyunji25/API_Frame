@@ -2,15 +2,15 @@
 #include "Scene.h"
 
 class GameObject;
-class Stage
+class Stage : public Scene
 {
 private: 
-
+	GameObject* m_pPlayer;
 public:
-	void Start();
-	int Update();
-	void Render(HDC hdc);
-	void Destroy();
+	virtual void Start()override;
+	virtual int Update()override;
+	virtual void Render(HDC hdc)override;
+	virtual void Destroy()override;
 public:
 	Stage();
 	virtual ~Stage();

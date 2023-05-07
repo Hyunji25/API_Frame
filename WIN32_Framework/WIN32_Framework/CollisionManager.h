@@ -29,11 +29,11 @@ public:
 	static bool RectCollision(GameObject* temp, GameObject* dest)
 	{
 		// 각각의 Rect 상, 하, 좌, 우 좌표를 비교하여 충돌을 확인
-		if ((temp->GetPosition().x + temp->GetScale().x * 0.5f > dest->GetPosition().x - dest->GetScale().x * 0.5f) &&
-			(dest->GetPosition().x + dest->GetScale().x * 0.5f > temp->GetPosition().x - temp->GetScale().x * 0.5f) &&
-			(temp->GetPosition().y + temp->GetScale().y * 0.5f > dest->GetPosition().y - dest->GetScale().y * 0.5f) &&
-			(dest->GetPosition().y + dest->GetScale().y * 0.5f > temp->GetPosition().y - temp->GetScale().y * 0.5f))
-						return true;
+		if (temp->GetPosition().x + (temp->GetScale().x * 0.5f) > dest->GetPosition().x - (dest->GetScale().x * 0.5f) &&
+			dest->GetPosition().x + (dest->GetScale().x * 0.5f) > temp->GetPosition().x - (temp->GetScale().x * 0.5f) &&
+			temp->GetPosition().y + (temp->GetScale().y * 0.5f) > dest->GetPosition().y - (dest->GetScale().y * 0.5f) &&
+			dest->GetPosition().y + (dest->GetScale().y * 0.5f) > temp->GetPosition().y - (temp->GetScale().y * 0.5f))
+			return true;
 		return false;
 	}
 };

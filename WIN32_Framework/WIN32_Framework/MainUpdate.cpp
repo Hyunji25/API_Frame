@@ -1,10 +1,7 @@
 #include "MainUpdate.h"
-#include "Player.h"
-#include "Enemy.h"
-#include "ObjectManager.h"
 #include "SceneManager.h"
 
-MainUpdate::MainUpdate() : m_pPlayer(NULL), m_pEnemy(NULL)
+MainUpdate::MainUpdate()
 {
 
 }
@@ -23,22 +20,17 @@ void MainUpdate::Start()
 
 void MainUpdate::Update()
 {
-
+	SceneManager::GetInstance()->Update();
 }
 
 void MainUpdate::Render()
 {
 	Rectangle(m_hdc, 0, 0, WIDTH, HEIGHT);
-
-	
+	SceneManager::GetInstance()->Render(m_hdc);
 }
 
 void MainUpdate::Destroy()
 {
-	if (m_pPlayer) 
-	{
-		delete m_pPlayer;
-		m_pPlayer = NULL;
-	}
+	
 }
 

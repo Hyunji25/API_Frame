@@ -4,10 +4,10 @@
 class Scene
 {
 public:
-	void Start();
-	int Update();
-	void Render(HDC hdc);
-	void Destroy();
+	virtual void Start()PURE;
+	virtual int Update()PURE;
+	virtual void Render(HDC hdc)PURE;
+	virtual void Destroy()PURE;
 public:
 	Scene();
 	virtual ~Scene();

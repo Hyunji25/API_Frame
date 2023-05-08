@@ -173,6 +173,7 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="WIN32_Framework.cpp" />
+    <ClCompile Include="소스.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WIN32_Framework.rc" />

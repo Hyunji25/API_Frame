@@ -1,5 +1,6 @@
 #include "MainUpdate.h"
 #include "SceneManager.h"
+#include "InputManager.h"
 
 MainUpdate::MainUpdate()
 {
@@ -20,6 +21,7 @@ void MainUpdate::Start()
 
 void MainUpdate::Update()
 {
+	InputManager::GetInstance()->CheckKey();
 	SceneManager::GetInstance()->Update();
 }
 

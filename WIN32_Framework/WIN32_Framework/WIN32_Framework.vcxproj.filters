@@ -58,6 +58,9 @@
     <Filter Include="소스 파일\02. Scene\Stage">
       <UniqueIdentifier>{d6625cfc-ff94-4ec7-8055-fe62e62d1153}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\99. Manager\InputManager">
+      <UniqueIdentifier>{1b14c0a5-aabd-4ae3-9bb1-21afe7e7c5d8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -120,6 +123,9 @@
     <ClInclude Include="Stage.h">
       <Filter>소스 파일\02. Scene\Stage</Filter>
     </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>소스 파일\99. Manager\InputManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WIN32_Framework.cpp">
@@ -161,6 +167,9 @@
     <ClCompile Include="소스.cpp">
       <Filter>헤더 파일\Headers</Filter>
     </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>소스 파일\99. Manager\InputManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WIN32_Framework.rc">
@@ -174,5 +183,8 @@
     <Image Include="WIN32_Framework.ico">
       <Filter>리소스 파일</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

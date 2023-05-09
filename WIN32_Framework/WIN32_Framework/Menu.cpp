@@ -1,5 +1,6 @@
 #include "Menu.h"
 #include "SceneManager.h"
+#include "InputManager.h"
 
 Menu::Menu()
 {
@@ -15,8 +16,13 @@ void Menu::Start()
 
 int Menu::Update()
 {
-	if (GetAsyncKeyState('S'))
+	DWORD dwKey = InputManager::GetInstance()->GetKey();
+
+	if (dwKey & KEYID_RETURN)
+	{
+		Sleep(100);
 		SceneManager::GetInstance()->SetScene(STAGE);
+	}
 
 	return 0;
 }

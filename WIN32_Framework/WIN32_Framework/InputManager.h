@@ -6,12 +6,15 @@ class InputManager
 private:
 	static InputManager* Instance;
 public:
+	Single(InputManager)
+		/*
 	static InputManager* GetInstance()
 	{
 		if (Instance == nullptr)
 			Instance = new InputManager;
 		return Instance;
 	}
+		*/
 private:
 	DWORD inputKey;
 public:

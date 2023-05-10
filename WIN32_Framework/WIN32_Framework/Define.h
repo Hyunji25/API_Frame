@@ -25,17 +25,19 @@ const int STATEID_JUMP = 0x00000004;
 
 
 #define Single(T)										\
-public:															\
-	static T& GetInstance()					\
-	{																\
-		static T Instance;							\
-		return Instance;								\
-	}																\
-private:														\
-	T(const T&) = delete;							\
+public:													\
+	static T** GetInstance()							\
+	{													\
+		static T* Instance;								\
+		if (Instance == nullptr)						\
+			Instance = new T;							\
+		return &Instance;								\
+	}													\
+private:												\
+	T(const T&) = delete;								\
 	T& operator=(const T&) = delete;
 
-#define GetSingle(T) (T::GetInstance())
+#define GetSingle(T) (*T::GetInstance())
 
 //GetSingle(Singleton).SetValue(10);
 // cout << GetSingle(Singleton).GetValue() << endl;

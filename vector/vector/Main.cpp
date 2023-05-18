@@ -60,79 +60,56 @@ void pop_back()
 	--Size;
 }
 
-// 위치가 사이즈보다 크면x, 수용량이 사이즈보다 크면x
 void insert(int _where, int _value)
 {
 	if (_where > Size)
 		return;
-
-	++Size;
 
 	if (Size == Capacity)
 	{
 		int Length = int(Capacity * 0.5f);
 		Capacity += Length < 1 ? 1 : Length;
 	}
+	
+	_where -= 1;
 
-	for (int i = Size - 1; i > _where; --i)
-	{
+	for (int i = Size; _where <= i ; --i)
 		Numbers[i + 1] = Numbers[i];
-	}
 
-	Numbers[_where - 1] = _value;
+	Numbers[_where] = _value;
+	++Size;
+}
+
+void erase(int _where)
+{
+	if (_where > Size || _where <= 0)
+		return;
+
+	--Size;
+	--_where;
+
+	for (int i = _where; i < Size; ++i)
+		Numbers[i] = Numbers[i + 1];
 }
 
 int main(void)
 {
-	push(10);
-	push(20);
-	push(30);
-	push(40);
-	push(50);
-
-	for (int i = 0; i < Length; ++i)
-	{
-		cout << Numbers[i] << endl;
-	}
-
-	cout << endl;
-
-	vector<int> vecList;
-
-	for (int i = 0; i < 5; ++i)
-	{
-		vecList.push_back(i * 10 + 10);
-
-		cout << vecList.capacity() << endl;
-		cout << vecList[i] << endl;
-	}
-
-	/*
-	vector<int> temp;
-
 	for (int i = 0; i < 10; ++i)
 	{
-		temp.push_back(i * 10 + 10);
-
-		cout << temp[i] << endl;
-		cout << "size : " << temp.size() << endl;
-		cout << "capacity : " << temp.capacity() << endl;
-	}
-	/
-
-	for (int i = 0; i < 10; ++i)
-	{
-		push_back(i 10 + 10);
+		push_back(i * 10 + 10);
 		cout << "Size : " << Size << endl;
-		cout << "Capacity : " << Capacity << endl;
+		cout << "Capacity : " << Capacity << endl << endl;
 	}
 
-	for (int i = 0; i < 10; ++i)
+	insert(6, 55);
+
+	erase(2);
+
+	for (int i = 0; i < Size; ++i)
 	{
 		cout << Numbers[i] << endl;
 	}
-*/
-
+	cout << "Size : " << Size << endl;
 	return 0;
 }
 

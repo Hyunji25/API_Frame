@@ -4,17 +4,29 @@
 
 using namespace std;
 
-typedef struct Score
+typedef struct tagScore
 {
 	string name;
 	int Kor;
 	int Eng;
 	int Math;
 
-	Score() : Kor(0), Eng(0), Math(0) {}
+	tagScore() : name(""), Kor(0), Eng(0), Math(0) {}
 
-	Score(int _kor, int _eng,	int _math) : Kor(_kor), Eng(_eng), Math(_math) {}
-};
+	tagScore(string _name) : name(_name), Kor(0), Eng(0), Math(0) {}
+
+	tagScore(int _kor, int _eng,	int _math)
+		: name(""), Kor(_kor), Eng(_eng), Math(_math) {}
+
+	tagScore(string _name, int _kor, int _eng,	int _math)
+		: name(_name), Kor(_kor), Eng(_eng), Math(_math) {}
+}Score;
+
+map<string, list<Score>> StudentList;
+
+Score CreateScore(string _name, int _kor, int _eng, int _math);
+
+bool AddStudent(string _key, Score _score);
 
 int main(void)
 {
@@ -50,25 +62,55 @@ int main(void)
 	}
 	*/
 
-	map<string, list<Score>> StudentList;
-
 	string key = "홍";
-	Score score = Score(10, 20, 30);
-	score.name = "길동";
+	string name = "길동";
 
+	Score score = Score(name, 10, 20, 30);
 
+	if (!AddStudent(key, score))
+		cout << "Log" << endl;
 
-
-	List.insert(make_pair(key, score));
-
-	score = Score(100, 200, 300);
-
-	List[key] = score;
-
-	cout << key + List[key].name << endl;
-	cout << List[key].Kor << endl;
-	cout << List[key].Eng << endl;
-	cout << List[key].Math << endl;
+	for (map<string, list<Score>>::iterator iter = StudentList.begin();
+		iter != StudentList.end(); ++iter)
+	{
+		for (list<Score>::iterator iter2 = iter->second.begin(); 
+			iter2 != iter->second.end(); ++iter2)
+		{
+			cout << iter2->name << endl;
+			cout << iter2->Kor << endl;
+			cout << iter2->Eng << endl;
+			cout << iter2->Math << endl;
+		}
+	}
+	
+	// list<int*>* Numbers; : 더블포인터x
 
 	return 0;
+}
+
+Score CreateScore(string _name, int _kor, int _eng, int _math)
+{
+	return Score(_name, _kor, _eng, _math);
+}
+
+bool AddStudent(string _key, Score _score)
+{
+	map<string, list<Score>>::iterator iter = StudentList.find(_key);
+
+	if (_name == "")
+		return false;
+
+	Score score = Score(_name, 10, 20, 30);
+	
+
+	if (iter == StudentList.end())
+	{
+		list<Score> tempList;
+		tempList.push_back(score);
+		StudentList.insert(make_pair(_key, tempList));
+	}
+	else
+		iter->second.push_back(score);
+
+	return true;
 }

@@ -153,6 +153,7 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Prototype.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
@@ -171,11 +172,11 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Prototype.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="WIN32_Framework.cpp" />
-    <ClCompile Include="소스.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WIN32_Framework.rc" />

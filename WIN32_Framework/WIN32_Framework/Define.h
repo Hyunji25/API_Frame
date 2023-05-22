@@ -24,17 +24,17 @@ const int STATEID_ATTACK = 0x00000002;
 const int STATEID_JUMP = 0x00000004;
 
 
-#define Single(T)										\
-public:													\
-	static T** GetInstance()							\
-	{													\
-		static T* Instance;								\
-		if (Instance == nullptr)						\
-			Instance = new T;							\
-		return &Instance;								\
-	}													\
-private:												\
-	T(const T&) = delete;								\
+#define Single(T)					\
+public:								\
+	static T** GetInstance()		\
+	{								\
+		static T* instance;			\
+		if(instance == nullptr)		\
+			instance = new T;		\
+		return &instance;			\
+	}								\
+private:							\
+	T(const T&) = delete;			\
 	T& operator=(const T&) = delete;
 
 #define GetSingle(T) (*T::GetInstance())

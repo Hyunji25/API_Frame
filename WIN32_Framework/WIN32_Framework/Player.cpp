@@ -2,6 +2,7 @@
 #include "Bullet.h"
 #include "ObjectManager.h"
 #include "InputManager.h"
+#include "Prototype.h"
 
 Player::Player()
 {
@@ -42,7 +43,7 @@ int Player::Update()
 
 	if (dwKey & KEYID_SPACE)
 	{
-		GetSingle(ObjectManager)->AddObject(CreateBullet());
+		ObjectManager::GetInstance()->AddObject(CreateBullet());
 	}
 
 	return 0;
@@ -64,9 +65,15 @@ void Player::Destroy()
 
 GameObject* Player::CreateBullet()
 {
-	GameObject* bullet = new Bullet;
-	bullet->Start();
-	bullet->SetPosition(transform.position);
+	GameObject* ProtoObj = GetSingle(Prototype)->GetGameObject("Bullet");
 
-	return bullet;
+	if (ProtoObj != nullptr)
+	{
+		GameObject* Object = ProtoObj->Clone();
+		Object->Start();
+		Object->SetPosition(transform.position);
+		return Object;
+	}
+	else
+		return nullptr;
 }

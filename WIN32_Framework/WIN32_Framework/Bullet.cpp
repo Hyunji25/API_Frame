@@ -42,5 +42,5 @@ void Bullet::Render(HDC hdc)
 
 void Bullet::Destroy()
 {
-	GetSingle(ObjectPool);
+	GetSingle(ObjectPool)->ReturnObject(this);
 }

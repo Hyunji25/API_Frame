@@ -9,12 +9,6 @@ ObjectPool::~ObjectPool()
 {
 }
 
-GameObject* ObjectPool::GetPoolObject()
-{
-	GameObject* Obj = PoolList.pop_back();
-	return nullptr;
-}
-
 void ObjectPool::ReturnObject(GameObject* _Object)
 {
 	PoolList.push_back(_Object);

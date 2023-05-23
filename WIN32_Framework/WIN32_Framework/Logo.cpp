@@ -21,7 +21,7 @@ int Logo::Update()
 	if (dwKey & KEYID_RETURN)
 	{
 		Sleep(100);
-		GetSingle(SceneManager)->SetScene(MENU);
+		SceneManager::GetInstance()->SetScene(MENU);
 	}
 
 	return 0;

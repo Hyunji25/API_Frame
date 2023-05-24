@@ -31,7 +31,7 @@ void ObjectManager::AddObject(GameObject* _Object)
 		ObjectList.insert(make_pair(_Object->GetKey(), tempList));
 	}
 	// 이미 키가 존재한다면...
-	else 
+	else
 		// 해당 리스트에 오브젝트를 추가
 		iter->second.push_back(_Object);
 }
@@ -49,4 +49,17 @@ list<GameObject*>* ObjectManager::GetObjectList(string key)
 	else
 		// second = value = list<GameObject*>를 반환
 		return &iter->second;
+}
+
+void ObjectManager::Render(HDC _hdc)
+{
+	for (map<string, list<GameObject*>>::iterator iter = ObjectList.begin();
+	iter != ObjectList.end(); ++iter)
+	{
+		for (list<GameObject*>::iterator iter2 = iter->second.begin();
+			iter2 != iter->second.end(); ++iter2)
+		{
+			(*iter2)->Render(_hdc);
+		}
+	}
 }

@@ -73,6 +73,18 @@
     <Filter Include="소스 파일\99. Manager\Factory">
       <UniqueIdentifier>{6362dcdd-0281-46eb-935a-52ddca97d420}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\98. Pattern\Bridge">
+      <UniqueIdentifier>{508ac5b8-4556-4c4b-81b1-5f6f0e6019ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. GameObject\Bullet\BulletBridge">
+      <UniqueIdentifier>{d19f7a09-9eb0-4a06-9319-dfa9fd3d339c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. GameObject\Bullet\BulletBridge\NormalBullet">
+      <UniqueIdentifier>{2e8866a3-0c55-4332-9deb-f58973c34f22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01. GameObject\Bullet\BulletBridge\GuideBullet">
+      <UniqueIdentifier>{6ee278a6-db14-49d2-b6ea-94578725bc19}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -147,6 +159,18 @@
     <ClInclude Include="ObjectFactory.h">
       <Filter>소스 파일\99. Manager\Factory</Filter>
     </ClInclude>
+    <ClInclude Include="Bridge.h">
+      <Filter>소스 파일\98. Pattern\Bridge</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletBridge.h">
+      <Filter>소스 파일\01. GameObject\Bullet\BulletBridge</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalBullet.h">
+      <Filter>소스 파일\01. GameObject\Bullet\BulletBridge\NormalBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="GuideBullet.h">
+      <Filter>소스 파일\01. GameObject\Bullet\BulletBridge\GuideBullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WIN32_Framework.cpp">
@@ -193,6 +217,12 @@
     </ClCompile>
     <ClCompile Include="Prototype.cpp">
       <Filter>소스 파일\98. Pattern\Prototype</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalBullet.cpp">
+      <Filter>소스 파일\01. GameObject\Bullet\BulletBridge\NormalBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="GuideBullet.cpp">
+      <Filter>소스 파일\01. GameObject\Bullet\BulletBridge\GuideBullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

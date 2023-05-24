@@ -3,6 +3,8 @@
 
 class Bullet : public GameObject
 {
+private:
+	Bridge* bulletBridge;
 public:
 	virtual GameObject* Start()override;
 	virtual int Update()override;
@@ -12,7 +14,7 @@ public:
 	virtual GameObject* Clone()override { return new Bullet(*this); }
 public:
 	Bullet();
-	Bullet(Transform _transform) : GameObject(_transform) {}
+	Bullet(Transform _transform) : GameObject(_transform), bulletBridge(nullptr) {}
 	virtual ~Bullet();
 };
 

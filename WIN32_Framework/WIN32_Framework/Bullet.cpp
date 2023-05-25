@@ -2,7 +2,7 @@
 #include "ObjectPool.h"
 #include "NormalBullet.h"
 
-Bullet::Bullet() : bulletBridge(nullptr)
+Bullet::Bullet()
 {
 }
 

@@ -35,7 +35,6 @@ public:
 	void SetScale(Vector3 _scale) { transform.scale = _scale; }
 
 	void SetBridge(Bridge* _bridge) { pBridge = _bridge; }
-
 public:
 	GameObject();
 	GameObject(Transform _transform) : transform(_transform), Speed(0.0f), pBridge(nullptr) {}

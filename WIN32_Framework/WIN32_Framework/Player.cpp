@@ -72,7 +72,7 @@ GameObject* Player::CreateBullet()
 {
 	Bridge* pBridge = new T;
 	pBridge->Start();
-	((BulletBridge*)pBridge)->SetTarget)(this);
+	((BulletBridge*)pBridge)->SetTarget(this);
 
 	GameObject* ProtoObj = GetSingle(Prototype)->GetGameObject("Bullet");
 
@@ -84,6 +84,8 @@ GameObject* Player::CreateBullet()
 		Object->SetBulletBridge(pBridge);
 
 		pBridge->SetObject(Object);
+		Object->SetBridge(pBridge);
+
 		return Object;
 	}
 	else

@@ -9,7 +9,6 @@ public:
 	virtual void Render(HDC hdc)override;
 	virtual void Destroy()override;
 public:
-	NormalBullet() {}
-	virtual ~NormalBullet() {}
+	NormalBullet();
+	virtual ~NormalBullet();
 };
-

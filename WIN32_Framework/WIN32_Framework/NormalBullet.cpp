@@ -1,4 +1,3 @@
-#pragma once
 #include "NormalBullet.h"
 #include "Bullet.h"
 
@@ -9,6 +8,7 @@ NormalBullet::NormalBullet()
 NormalBullet::~NormalBullet()
 {
 }
+
 
 void NormalBullet::Start()
 {
@@ -31,4 +31,5 @@ void NormalBullet::Render(HDC hdc)
 
 void NormalBullet::Destroy()
 {
+
 }

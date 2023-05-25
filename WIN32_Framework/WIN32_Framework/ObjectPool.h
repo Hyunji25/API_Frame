@@ -9,8 +9,8 @@ public:
 private:
 	map<string, list<GameObject*>> PoolList;
 public:
-	list<GameObject*>* GetList(string _key) 
-	{ 
+	list<GameObject*>* GetList(string _key)
+	{
 		map<string, list<GameObject*>>::iterator iter = PoolList.find(_key);
 
 		if (iter == PoolList.end())

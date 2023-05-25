@@ -4,7 +4,7 @@
 class GameObject;
 class Bridge
 {
-private:
+protected:
 	GameObject* Object;
 public:
 	virtual void Start()PURE;

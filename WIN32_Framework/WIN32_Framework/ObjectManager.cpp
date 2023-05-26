@@ -57,12 +57,13 @@ void ObjectManager::Update()
 		iter != ObjectList.end(); ++iter)
 	{
 		for (list<GameObject*>::iterator iter2 = iter->second.begin();
-			iter2 != iter->second.end(); ++iter2)
+			iter2 != iter->second.end(); )
 		{
 			int result = (*iter2)->Update();
 
 			if (result == 1)
 			{
+				//GetSingle(ObjectPool)->ReturnObject((*iter2));
 				(*iter2)->Destroy();
 				iter2 = iter->second.erase(iter2);
 			}

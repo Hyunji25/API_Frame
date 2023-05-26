@@ -71,32 +71,35 @@ void Player::Destroy()
 template <typename T>
 GameObject* Player::CreateBullet(string _Key)
 {
-	GameObject* Obj = GetSingle(ObjectPool)->GetList(_Key);
+	GameObject* Obj = GetSingle(ObjectPool)->GetGameObject(_Key);
+
 	if (Obj == nullptr)
 	{
+		Bridge* pBridge = new T;
+		pBridge->Start();
+		((BulletBridge*)pBridge)->SetTarget(this);
 
+		GameObject* ProtoObj = GetSingle(Protptype)->GetGameObject(_Key);
+
+		if (ProtoObj != nullptr)
+		{
+			GameObject* Object = ProtoObj->Clone();
+			Object->Start();
+			Object->SetPosition(transform.position);
+			Object->SetKey(_Key);
+
+			pBridge->SetObject(Object);
+			Object->SetBridge(pBridge);
+
+			return Object;
+		}
+		else
+			return nullptr;
 	}
 
 	Obj->Start();
+	Obj->SetPosition(transform.position);
+	Obj->SetKey(_Key);
 
-	Bridge* pBridge = new T;
-	pBridge->Start();
-	((BulletBridge*)pBridge)->SetTarget(this);
-
-	GameObject* ProtoObj = GetSingle(Prototype)->GetGameObject("Bullet");
-
-	if (ProtoObj != nullptr)
-	{
-		GameObject* Object = ProtoObj->Clone();
-		Object->Start();
-		Object->SetPosition(transform.position);
-		Object->SetKey(_Key);
-
-		pBridge->SetObject(Object);
-		Object->SetBridge(pBridge);
-
-		return Object;
-	}
-	else
-		return nullptr;
+	return Obj;
 }

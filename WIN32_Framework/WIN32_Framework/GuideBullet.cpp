@@ -19,7 +19,7 @@ void GuideBullet::Update(Transform& transform)
 	float Horizontal = Target->GetPosition().x - transform.position.x;
 	float Vertical = Target->GetPosition().y - transform.position.y;
 
-	float Distance = sqrt((Horizontal * Horizontal) + (Vertical * Vertical));
+	float Distance = (float)sqrt((Horizontal * Horizontal) + (Vertical * Vertical));
 
 	Vector3 Direction;
 

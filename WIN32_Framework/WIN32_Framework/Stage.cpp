@@ -72,7 +72,7 @@ void Stage::Render(HDC hdc)
 	if (m_pPlayer)
 		m_pPlayer->Render((*m_mapImageList)["Buffer"]->GetMemDC());
 
-	ObjectManager::GetInstance()->Render((*m_mapImageList)["Buffer"]);
+	ObjectManager::GetInstance()->Render((*m_mapImageList)["Buffer"]->GetMemDC());
 
 	BitBlt(hdc,			// 복사해 넣을 그림판
 		0, 0, WIDTH, HEIGHT,			// 복사할 영역 시작점으로부터 끝부분까지

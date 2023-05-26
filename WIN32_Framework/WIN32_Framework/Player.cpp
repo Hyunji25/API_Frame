@@ -79,7 +79,7 @@ GameObject* Player::CreateBullet(string _Key)
 		pBridge->Start();
 		((BulletBridge*)pBridge)->SetTarget(this);
 
-		GameObject* ProtoObj = GetSingle(Protptype)->GetGameObject(_Key);
+		GameObject* ProtoObj = GetSingle(Prototype)->GetGameObject(_Key);
 
 		if (ProtoObj != nullptr)
 		{

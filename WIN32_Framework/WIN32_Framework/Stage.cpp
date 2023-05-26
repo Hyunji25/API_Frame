@@ -43,7 +43,7 @@ void Stage::Start()
 
 	EnemyList = ObjectManager::GetInstance()->GetObjectList("Enemy");
 
-	map<string, Bitmap*>* m_mapImageList = GetSingle(ImageManager)->GetImageList();
+	m_mapImageList = GetSingle(ImageManager)->GetImageList();
 
 	(*m_mapImageList)["BackGround"] = (new Bitmap)->LoadBmp(L"../Resource/Stage/BackGround.bmp");
 	(*m_mapImageList)["Buffer"] = (new Bitmap)->LoadBmp(L"../Resource/Stage/Buffer.bmp");
@@ -72,6 +72,7 @@ void Stage::Render(HDC hdc)
 	if (m_pPlayer)
 		m_pPlayer->Render((*m_mapImageList)["Buffer"]->GetMemDC());
 
+	ObjectManager::GetInstance()->Render((*m_mapImageList)["Buffer"]);
 
 	BitBlt(hdc,			// 복사해 넣을 그림판
 		0, 0, WIDTH, HEIGHT,			// 복사할 영역 시작점으로부터 끝부분까지
@@ -79,7 +80,7 @@ void Stage::Render(HDC hdc)
 		0, 0,		// 스케일을 잡아준다
 		SRCCOPY);		// 소스 영역을 대상 영역에 복사한다
 	
-	ObjectManager::GetInstance()->Render(hdc);
+	
 
 #ifdef DEBUG
 	list<GameObject*>* enemyList = ObjectManager::GetInstance()->GetObjectList("Enemy");

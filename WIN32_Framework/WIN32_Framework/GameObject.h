@@ -1,16 +1,20 @@
 #pragma once
 #include "Include.h"
 
+class Bitmap;
 class Bridge;
 class GameObject
 {
 protected:
 	Transform transform;
 	float Speed;
-
 	string Key;
 
 	Bridge* pBridge;
+
+	static map<string, Bitmap*>* m_ImageList;
+public:
+	static void SetImageList(map<string, Bitmap*>* _ImageList) { m_ImageList = _ImageList; }
 public:
 	virtual GameObject* Start()PURE;
 	virtual int Update()PURE;
@@ -20,11 +24,7 @@ public:
 	virtual GameObject* Clone()PURE;
 public:
 	string GetKey() { return Key; }
-	GameObject* SetKey(const string& _key) 
-	{ 
-		Key = _key; 
-		return this;
-	}
+	GameObject* SetKey(const string& _key) { Key = _key; return this; }
 
 	Transform GetTransform() { return transform; }
 

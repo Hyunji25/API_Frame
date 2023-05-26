@@ -27,7 +27,6 @@ void MainUpdate::Update()
 
 void MainUpdate::Render()
 {
-	Rectangle(m_hdc, 0, 0, WIDTH, HEIGHT);
 	SceneManager::GetInstance()->Render(m_hdc);
 }
 

@@ -14,3 +14,6 @@ using namespace std;
 #include "Define.h"
 #include "Structs.h"
 #include "Enum.h"
+
+// ** 이미지 라이브러리
+#pragma comment(lib, "msimg32.lib")

@@ -21,20 +21,56 @@ Player::~Player()
 
 GameObject* Player::Start()
 {
+	frame.CountX = 0;
+	frame.CountY = 0;
+	frame.EndFrame = 7;
+	frame.FrameTime = 50;
+
 	transform.position = Vector3(WIDTH * 0.5f, HEIGHT * 0.5f, 0.0f);
 	transform.direction = Vector3(0.0f, 0.0f, 0.0f);
-	transform.scale = Vector3(100.0f, 100.0f, 0.0f);
+	transform.scale = Vector3(676 / 7, 639 / 9, 0.0f);
 
 	Speed = 5.0f;
 
-	Key = "BackGround";
+	Key = "Player";
 
+	Time = GetTickCount64();
 	return this;
 }
 
 int Player::Update()
 {
 	DWORD dwKey = GetSingle(InputManager)->GetKey();
+
+	if (Time + frame.FrameTime < GetTickCount64())
+	{
+		Time = GetTickCount64();
+		++frame.CountX;
+
+		if (frame.CountX >= frame.EndFrame)
+			frame.CountX = 0;
+
+		if (dwKey & (KEYID_UP | KEYID_DOWN | KEYID_LEFT | KEYID_RIGHT))
+		{
+			frame.CountY = 1;
+			frame.EndFrame = 3;
+		}
+		else if (dwKey & (KEYID_SPACE | KEYID_CONTROL))
+		{
+			frame.CountY = 5;
+			frame.EndFrame = 4;
+		}
+		else if (GetAsyncKeyState(VK_LSHIFT))
+		{
+			frame.CountY = 4;
+			frame.EndFrame = 2;
+		}
+		else
+		{
+			frame.CountY = 0;
+			frame.EndFrame = 7;
+		}
+	}
 
 	if (dwKey & KEYID_UP)
 		transform.position.y -= Speed;
@@ -54,6 +90,8 @@ int Player::Update()
 	if (dwKey & KEYID_CONTROL)
 		ObjectManager::GetInstance()->AddObject(CreateBullet<GuideBullet>("GuideBullet"));
 
+	if (GetAsyncKeyState(VK_LSHIFT))
+		transform.position.x += Speed * 2;
 	return 0;
 }
 
@@ -65,8 +103,8 @@ void Player::Render(HDC hdc)
 		(int)transform.scale.x,	// 복사할 영역 끝부분 X
 		(int)transform.scale.y, 	// 복사할 영역 끝부분 Y
 		(*m_ImageList)[Key]->GetMemDC(),	// 복사할 이미지 (복사대상)
-		0,  // 복사할 시작점 X
-		0,	// 복사할 시작점 Y
+		transform.scale.x * frame.CountX,  // 복사할 시작점 X
+		transform.scale.y * frame.CountY,	// 복사할 시작점 Y
 		(int)transform.scale.x, 			// 출력할 이미지의 크기 만큼 X
 		(int)transform.scale.y,			// 출력할 이미지의 크기 만큼 Y
 		RGB(255, 0, 255));		// 해당 색상을 제외

@@ -49,7 +49,8 @@ void Stage::Start()
 
 	(*m_mapImageList)["BackGround"] = (new Bitmap)->LoadBmp(L"../Resource/Stage/BackGround.bmp");
 	(*m_mapImageList)["Buffer"] = (new Bitmap)->LoadBmp(L"../Resource/Stage/Buffer.bmp");
-	(*m_mapImageList)["Player"] = (new Bitmap)->LoadBmp(L"../Resource/Stage/Player.bmp");
+	(*m_mapImageList)["PlayerR"] = (new Bitmap)->LoadBmp(L"../Resource/Stage/Player.bmp");
+	(*m_mapImageList)["PlayerL"] = (new Bitmap)->LoadBmp(L"../Resource/Stage/Player_L.bmp");
 
 	GameObject::SetImageList(m_mapImageList);
 }
@@ -64,11 +65,17 @@ int Stage::Update()
 	GameObject* NorB = GetSingle(Prototype)->GetGameObject("NormalBullet");
 	GameObject* GuiB = GetSingle(Prototype)->GetGameObject("GuideBullet");
 	GameObject* Enm = GetSingle(Prototype)->GetGameObject("Enemy");
-
+	/*
 	if (CollisionManager::RectCollision(NorB, Enm))
 	{
-
+		NorB->Destroy();
 	}
+
+	if (CollisionManager::RectCollision(GuiB, Enm))
+	{
+		GuiB->Destroy();
+	}
+	*/
 
 	return 0;
 }

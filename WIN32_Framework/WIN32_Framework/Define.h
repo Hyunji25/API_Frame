@@ -25,6 +25,7 @@ const int STATEID_ATTACK = 0x00000002;
 const int STATEID_JUMP = 0x00000004;
 
 
+// C 사용할 때만 가능
 #define Single(T)					\
 public:								\
 	static T** GetInstance()		\
@@ -39,6 +40,19 @@ private:							\
 	T& operator=(const T&) = delete;
 
 #define GetSingle(T) (*T::GetInstance())
+
+
+// 인라인 함수
+template <typename T>
+inline void Safe_Release(T& _Object)
+{
+	if (_Object)
+	{
+		delete _Object;
+		_Object = nullptr;
+	}
+}
+
 
 //GetSingle(Singleton).SetValue(10);
 // cout << GetSingle(Singleton).GetValue() << endl;

@@ -36,7 +36,7 @@ const Vector3 scale(6, 3);
 
 // ** 전방 선언
 void SetCorsorPosition(const float& _x, const float& _y);
-void SetColor(const int& color);
+void SetColor(const int& _color);
 void Text(const float& _x, const float& _y, const string& _str, int _color);
 bool CheckTileList(int _index);
 
@@ -45,7 +45,7 @@ typedef struct tagVector3
 	float x, y;
 
 	tagVector3() : x(0.0f), y(0.0f) {}
-	tagVector3(float _x, float _y) : x(_x), y(_y) {}
+	tagVector3(float _x, float _y) : x(_x), y(_y) { }
 
 }Vector3;
 
@@ -55,8 +55,8 @@ typedef struct tagTile
 	string tile[4];
 	int option;
 	int index;
-	int color;
 	int value;
+	int color;
 	bool check;
 
 	void Render()
@@ -66,16 +66,18 @@ typedef struct tagTile
 		case 0:
 			color = 15;
 			break;
+
 		case 1:
 			color = 12;
 			break;
 		}
 
-		for (int i = 0; i < 3; ++i)
+		for (int i = 0; i < 4; ++i)
 			Text(position[i].x, position[i].y, tile[i], color);
 	}
 
 	tagTile() : option(0), check(false) {}
+
 }Tile;
 
 typedef struct tagInfo
@@ -85,14 +87,13 @@ typedef struct tagInfo
 	int option;
 
 	tagInfo() : option(0) {}
+
 }Info;
 
 list<Tile*> BlackTileList;
 
 int main(void)
 {
-	BlackTileList.clear();
-
 	// ** 타일 위치
 	vector<Tile*> TileList;
 
@@ -143,7 +144,7 @@ int main(void)
 			TileList[random2]->value = value;
 		}
 	}
-		
+
 	for (int i = 0; i < COUNT_Y * COUNT_X; ++i)
 	{
 		char* buffer = new char[4];
@@ -153,21 +154,22 @@ int main(void)
 		TileList[i]->position[3] = Vector3(TileList[i]->position[1].x + 2, TileList[i]->position[1].y);
 		TileList[i]->tile[3] = string(buffer);
 	}
-		
+
 	// ** Target
 	Info Cursur;
-
+		   
 	Cursur.position = Vector3(20.0f, 10.0f);
 	Cursur.option = 0;
 
-	// ** 커서가 위치한 파일의 인덱스
+	// ** 커서가 위치한 타일의 인덱스
 	int X = int(Cursur.position.x / scale.x);
 	int Y = int(Cursur.position.y / scale.y);
 
 	int index = Y * COUNT_X + X;
 
+
 	ULONGLONG time = GetTickCount64();
-		
+
 	while (true)
 	{
 		if (time + 50 < GetTickCount64())
@@ -182,7 +184,7 @@ int main(void)
 
 			if (GetAsyncKeyState(VK_UP))
 			{
-				if (index < MAX &&
+				if( index < MAX && 
 					5 <= index &&
 					CheckTileList(index - COUNT_X))
 					index -= COUNT_X;
@@ -205,7 +207,7 @@ int main(void)
 
 			if (GetAsyncKeyState(VK_RIGHT))
 			{
-				if (index % 5 - 4 != 0 &&
+				if (index % 5 - 4!= 0 &&
 					CheckTileList(index + 1))
 					index += 1;
 			}
@@ -221,20 +223,35 @@ int main(void)
 			{
 				if (index == i)
 				{
-					Text(TileList[index]->position[0].x, TileList[index]->position[0].y, TileList[index]->tile[0], 10);
-					Text(TileList[index]->position[1].x, TileList[index]->position[1].y, TileList[index]->tile[1], 10);
-					Text(TileList[index]->position[2].x, TileList[index]->position[2].y, TileList[index]->tile[2], 10);
-					Text(TileList[index]->position[3].x, TileList[index]->position[3].y, TileList[index]->tile[3], 10);
+					Text(TileList[index]->position[0].x,
+						TileList[index]->position[0].y,
+						TileList[index]->tile[0],
+						10);
 
+					Text(TileList[index]->position[1].x,
+						TileList[index]->position[1].y,
+						TileList[index]->tile[1],
+						10);
+
+					Text(TileList[index]->position[2].x,
+						TileList[index]->position[2].y,
+						TileList[index]->tile[2],
+						10);
+
+					Text(TileList[index]->position[3].x,
+						TileList[index]->position[3].y,
+						TileList[index]->tile[3],
+						10);
 				}
 				else
 					TileList[i]->Render();
 			}
-			// ** CPU가 연산을 하지 않는 상태.
-			Sleep(150);
+
+			// ** CPU가 연산을 하지 않는 상태
+			Sleep(50);
 		}
 	}
-
+	
 	return 0;
 }
 
@@ -254,7 +271,7 @@ void SetColor(const int& _color)
 		handle, _color);
 }
 
-void Text(const float& _x, const float& _y, const string& _str, int _color = 15)
+void Text(const float& _x, const float& _y, const string& _str, int _color = 15) 
 {
 	SetColor(_color);
 	SetCorsorPosition(_x, _y);

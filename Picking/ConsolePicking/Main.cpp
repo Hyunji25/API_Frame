@@ -13,9 +13,6 @@ using namespace std;
 // ** 타일 최대 개수
 const int MAX = COUNT_X * COUNT_Y;
 
-// ** 타일 크기
-const Vector3 scale(6, 3);
-
 // ** 색
 #define BLACK		0
 #define DARKBLUE	1
@@ -90,6 +87,9 @@ typedef struct tagInfo
 
 }Info;
 
+// ** 타일 크기
+const Vector3 scale(6, 3);
+
 list<Tile*> BlackTileList;
 
 int main(void)
@@ -157,7 +157,7 @@ int main(void)
 
 	// ** Target
 	Info Cursur;
-		   
+
 	Cursur.position = Vector3(20.0f, 10.0f);
 	Cursur.option = 0;
 
@@ -166,7 +166,6 @@ int main(void)
 	int Y = int(Cursur.position.y / scale.y);
 
 	int index = Y * COUNT_X + X;
-
 
 	ULONGLONG time = GetTickCount64();
 
@@ -184,7 +183,7 @@ int main(void)
 
 			if (GetAsyncKeyState(VK_UP))
 			{
-				if( index < MAX && 
+				if (index < MAX &&
 					5 <= index &&
 					CheckTileList(index - COUNT_X))
 					index -= COUNT_X;
@@ -207,7 +206,7 @@ int main(void)
 
 			if (GetAsyncKeyState(VK_RIGHT))
 			{
-				if (index % 5 - 4!= 0 &&
+				if (index % 5 - 4 != 0 &&
 					CheckTileList(index + 1))
 					index += 1;
 			}
@@ -247,11 +246,11 @@ int main(void)
 					TileList[i]->Render();
 			}
 
-			// ** CPU가 연산을 하지 않는 상태
+			// ** CPU가 연산을 하지 않는 상태.
 			Sleep(50);
 		}
 	}
-	
+
 	return 0;
 }
 
@@ -271,7 +270,7 @@ void SetColor(const int& _color)
 		handle, _color);
 }
 
-void Text(const float& _x, const float& _y, const string& _str, int _color = 15) 
+void Text(const float& _x, const float& _y, const string& _str, int _color = 15)
 {
 	SetColor(_color);
 	SetCorsorPosition(_x, _y);
@@ -286,9 +285,6 @@ bool CheckTileList(int _index)
 			return false;
 	}
 	return true;
-}
-
-
 
 
 

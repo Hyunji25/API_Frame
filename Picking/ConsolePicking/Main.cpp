@@ -285,7 +285,7 @@ bool CheckTileList(int _index)
 			return false;
 	}
 	return true;
-
+}
 
 
 // 한타일 글자 흰색으로 해서 키보드로 움직이게 하는 것도 해보기

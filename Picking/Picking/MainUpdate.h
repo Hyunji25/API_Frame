@@ -4,7 +4,7 @@
 class Stage;
 class MainUpdate
 {
-private:
+protected:
 	HDC m_hdc;
 	Stage* stage;
 public:

@@ -35,3 +35,5 @@ void MainUpdate::Destroy()
 	stage = nullptr;
 }
 
+
+

@@ -5,7 +5,6 @@ class Tile : public Object
 {
 private:
 	int check;
-	string Key;
 	Vector3 position;
 	Vector3 scale;
 public:

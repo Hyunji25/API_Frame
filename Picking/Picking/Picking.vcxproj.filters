@@ -28,15 +28,6 @@
     <Filter Include="소스 파일\Object\Tile">
       <UniqueIdentifier>{ab5ffb9b-b7f2-4fe1-96ef-48e5886eb8b3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\ImageManager">
-      <UniqueIdentifier>{90ef7701-de6d-4964-9b6f-39232bf384a9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Bitmap">
-      <UniqueIdentifier>{8632fe14-c85e-411f-bd63-e34fab2b409c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\ObjectManager">
-      <UniqueIdentifier>{5ded75fe-f2b7-40ac-9fe3-c21d15b5f5a9}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -69,15 +60,6 @@
     <ClInclude Include="Struct.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="ImageManager.h">
-      <Filter>소스 파일\ImageManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Bitmap.h">
-      <Filter>소스 파일\Bitmap</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Picking.cpp">
@@ -94,15 +76,6 @@
     </ClCompile>
     <ClCompile Include="Tile.cpp">
       <Filter>소스 파일\Object\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="ImageManager.cpp">
-      <Filter>소스 파일\ImageManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Bitmap.cpp">
-      <Filter>소스 파일\Bitmap</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectManager.cpp">
-      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

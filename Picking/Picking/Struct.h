@@ -11,11 +11,3 @@ typedef struct tagVector3
 	tagVector3(float _x, float _y, float _z) : x(_x), y(_y), z(_z) {}
 
 }Vector3;
-
-typedef struct tagFrame
-{
-	float FrameTime;
-	int CountX;
-	int CountY;
-	int EndFrame;
-}Frame;

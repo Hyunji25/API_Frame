@@ -14,6 +14,3 @@ using namespace std;
 #pragma comment(lib, "msimg32.lib")
 
 extern HWND g_hWnd;
-
-#define WIDTH 128
-#define HEIGHT 64

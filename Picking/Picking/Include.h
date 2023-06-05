@@ -34,8 +34,8 @@ private:							\
 #define HEIGHT 720
 
 // ** 타일 가로, 세로 최대 개수
-#define COUNT_X (WIDTH/SCALE_X)+1
-#define COUNT_Y (HEIGHT/SCALE_Y)+1
+#define COUNT_X (WIDTH/SCALE_X)
+#define COUNT_Y (HEIGHT/SCALE_Y)
 
 // ** 타일 가로, 세로 크기
 #define SCALE_X 32.0f
